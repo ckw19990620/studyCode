@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button id="send">发送Ajax请求</button>
+<p id="show_title"></p>
+<p id="show_content"></p>
+<script>
+  const btns = document.getElementById('send');
+  const title = document.getElementById('show_title');
+  const content = document.getElementById('show_content');
+  btns.addEventListener('click', function () {
+    const p = new Promise((resolve, reject) => {
+      // 创建对象
+      const xhr = new XMLHttpRequest();
+      // 初始化
+      xhr.open('GET', 'https://api.apiopen.top/api/sentences');
+      // 发送
+      xhr.send();
+      // 处理响应结果
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            const {result: res} = JSON.parse(xhr.response)
+            resolve(res)
+          } else {
+            reject(xhr.status)
+          }
+        }
+      }
+    });
+    p.then(res => {
+      title.innerText = res.from
+      content.innerText = res.name
+    }, err => {
+      console.log(err);
+    });
+  })
+</script>
+</body>
+</html>

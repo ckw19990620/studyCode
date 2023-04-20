@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>量词符</title>
+</head>
+<body>
+<script>
+    // 量词符：用来设定某个模式出现的次数
+    // 简单理解：就是让下面的/^a$/字符重复多少次
+    // let reg = /^a$/
+
+    // * 代表 >= 0 代表可以出现0次和很多次
+    let reg = /^a*$/
+    console.log(reg.test(''));      // true
+    console.log(reg.test('a'));     // true
+    console.log(reg.test('aa'));    // true
+    console.log('----------------');
+
+    // + 代表 >=1 代表可以出现1次和很多次
+    let reg1 = /^a+$/
+    console.log(reg1.test(''));      // false
+    console.log(reg1.test('a'));     // true
+    console.log(reg1.test('aa'));    // true
+    console.log('-----------------');
+
+    // ? 相当于 1 || 0
+    let reg2 = /^a?$/
+    console.log(reg2.test(''));      // true
+    console.log(reg2.test('a'));     // true
+    console.log(reg2.test('aaaa'));    // false
+    console.log('-------------');
+
+    // {n}重复n次
+    let reg3 = /^a{3}$/
+    console.log(reg3.test(''));      // false
+    console.log(reg3.test('a'));     // false
+    console.log(reg3.test('aaaa'));    // false
+    console.log(reg3.test('aaa'));    // true
+    console.log('----------------');
+
+    // {n,}大于等于n次
+    let reg4 = /^a{3,}$/
+    console.log(reg4.test(''));      // false
+    console.log(reg4.test('a'));     // false
+    console.log(reg4.test('aaaa'));    // true
+    console.log(reg4.test('aaa'));    // true
+    console.log('--------');
+
+    // {n,m}大于等于 n 次，小于等于 m 次
+    let reg5 = /^a{3,5}$/
+    console.log(reg5.test(''));      // false
+    console.log(reg5.test('a'));     // false
+    console.log(reg5.test('aaaa'));    // true
+    console.log(reg5.test('aaa'));    // true
+    console.log(reg5.test('aaaaa'));    // true
+    console.log(reg5.test('aaaaaaa'));    // false
+</script>
+</body>
+</html>

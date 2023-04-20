@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="nav">
+  <li>苹果</li>
+  <li>香蕉</li>
+  <li>栗子</li>
+  <li>梨</li>
+</div>
+<script>
+  let lis = document.querySelector('.nav').querySelectorAll('li');
+  for (let i = 0; i < lis.length; i++) {
+    (function (i) {
+      setTimeout(function () {
+        console.log(lis[i].innerHTML);
+      }, 3000)
+    })(i)
+  }
+</script>
+</body>
+</html>

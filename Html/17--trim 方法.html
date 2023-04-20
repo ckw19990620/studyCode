@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>trim方法</title>
+</head>
+<body>
+<input type="text">
+<button>点击</button>
+<div></div>
+<script>
+    let str = '   sbsbsbsbsb   ';
+    // console.log(str);
+    let str1 = str.trim();
+    // console.log(str1);
+    let input = document.querySelector('input');
+    let btn = document.querySelector('button');
+    let div = document.querySelector('div');
+    btn.onclick = function (){
+        if (input.value.trim() === ''){
+            alert('请输入内容');
+            input.value = ''
+        }else {
+            console.log(input.value.trim());
+            console.log(input.value.trim().length);
+            div.innerHTML = input.value;
+        }
+    }
+</script>
+</body>
+</html>

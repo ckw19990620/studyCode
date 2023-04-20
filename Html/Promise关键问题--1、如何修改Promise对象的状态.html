@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Promise对象改变状态的方式</title>
+</head>
+<body>
+<script>
+  let p = new Promise((resolve, reject) => {
+    // 1、resolve函数
+    // resolve('success')  // pending => fullfilled
+    // 2、reject函数
+    // reject('error')     // pending => rejected
+    // 3、抛出异常
+    // throw '出大问题'
+  })
+  console.log(p);
+</script>
+</body>
+</html>

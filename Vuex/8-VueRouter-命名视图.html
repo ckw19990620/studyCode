@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .firstpage{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        .secondpage{
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+        }
+    </style>
+    <script src="./JS/vue.js"></script>
+    <script src="./JS/vuex-3.6.2/dist/vuex.js"></script>
+    <script src="./JS/vue-user-3.5.3/dist/vue-user.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 路由出口 -->
+        <!-- 和匿名插槽一样，如果指定了多个router-view，当路由地址被匹配之后，多个router-view中显示的内容是一样的 -->
+        <user-view name="name1"></user-view>
+        <user-view name="name2"></user-view>
+    </div>
+    <template id="one">
+        <div class="firstpage">
+            <p>我是第一个页面</p>
+        </div>
+    </template>
+    <template id="two">
+        <div class="secondpage">
+            <p>我是第二个界面</p>
+        </div>
+    </template>
+    <script>
+        //1、定义组件
+        const one ={
+            template:"#one",
+            components:{
+            }
+        };
+        const two = {
+            template:"#two",
+
+        };
+        //2、定义切换的规则
+        const routes = [
+            {
+                path:'/',
+                components:{
+                    name1:one,
+                    name2:two
+                }
+            },
+            {path:'two',component:two}
+        ];
+        //3、根据自定义的规则创建路由对象
+        const user = new VueRouter({
+            routes:routes,
+            //指定被选中时的样式
+            linkActiveClass:"choose"
+        });
+        let vue = new Vue({
+            el:"#app",
+            //4、将创建好的路由对象绑定到Vue实例中
+            user:user,
+            data:{
+
+            },
+            methods: {
+
+            },
+            computed:{
+
+            },
+            directives:{
+
+            },
+            filters:{
+
+            },
+            components:{
+                one : one,
+                two : two
+            },
+        })
+    </script>
+</body>
+</html>

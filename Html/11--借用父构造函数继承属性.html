@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>借用父构造函数继承属性</title>
+</head>
+<body>
+<script>
+    // 借用父构造函数继承属性
+    // 1、父构造函数
+    function Father(uname, age) {
+        // this指向父构造函数的实例对象
+        this.name = uname;
+        this.age = age
+    }
+    Father.prototype.money = function (){
+        console.log('父亲要挣钱')
+    };
+    // Son.prototype = Father.prototype;   直接赋值会有问题，如果子原型对象发生变化，那么父原型对象也会变化
+    // 2、子构造函数
+    function Son(uname, age, score) {
+        // this指向子构造函数的实例对象
+        Father.call(this, uname, age,);
+        this.score = score
+    }
+    // 这个是子构造函数专门的方法
+    // 将Father实例对象赋值给Son原型对象，此时，Father实例对象和Father原型对象处于不同的存储地址中，所以不会造成数据混乱
+    // 又因为Father实例对象可以通过__proto__访问Father原型对象，所以Son原型对象可以使用Father原型对象中的money方法
+
+    // 如果利用对象的形式修改了原型对象，别忘了利用constructor指回原来的构造函数
+    Son.prototype = new Father();
+    Son.prototype.constructor = Son
+    Son.prototype.exam = function (){
+        console.log('孩子要考试');
+    }
+    let son = new Son('ckw',18, 100);
+    // console.log(son);
+    console.log(son);
+    console.log(Father.prototype);
+    console.log(Son.prototype.constructor);
+</script>
+</body>
+</html>

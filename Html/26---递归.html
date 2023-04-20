@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>递归</title>
+</head>
+<body>
+<script>
+    let num = 1;
+    function fn(){
+        console.log('这是第'+num+'句话');
+        if (num ===   6){
+            return;
+        }
+        num++;
+        fn();
+    }
+    fn();
+</script>
+</body>
+</html>

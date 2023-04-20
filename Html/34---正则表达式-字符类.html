@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符类</title>
+</head>
+<body>
+<script>
+    // `[]`字符类：表示有一系列字符可供选择，只要匹配其中一项就可以(多选一)
+    let rg = /[abc]/    //只要包含a、b、c中的任何一项，则返回true
+    console.log(rg.test('aa1q123'));    //true
+    console.log(rg.test('zsdf3123'));    //false
+    console.log('----------');
+    let rg1 = /^[abc]$/     //三选一，只有是a/b/c才返回true
+    console.log(rg1.test('ab'));    //false
+    console.log(rg1.test('a'));    //true
+    console.log(rg1.test('b'));    //true
+    console.log(rg1.test('c'));    //true
+    console.log('----------');
+    let reg = /^[a-z]$/     //26个英文字母中的任意一个都返回true
+    console.log(reg.test('a'));     //true
+    console.log(reg.test('b'));     //true
+    console.log(reg.test('c'));     //true
+    console.log(reg.test('A'));     //false
+    console.log(reg.test(1));     //false
+    console.log('------------');
+
+
+    // 字符组合
+    let reg1 = /^[a-zA-Z0-9_·-]$/     //大小写的英文字母和数字都可以
+    console.log(reg1.test('a'));     //true
+    console.log(reg1.test('B'));     //true
+    console.log(reg1.test('1'));     //true
+    console.log(reg1.test('_'));     //true
+    console.log(reg1.test('-'));     //true
+    console.log(reg1.test('·'));     //true
+    console.log(reg1.test('-_'));    //false
+    console.log('--------------------');
+
+    // 如果中括号中有'^'则代表取反，需要与边界符分割开理解
+    let reg2 = /^[^a-zA-Z0-9_·-]$/
+    console.log(reg2.test('!'));    // true
+</script>
+</body>
+</html>

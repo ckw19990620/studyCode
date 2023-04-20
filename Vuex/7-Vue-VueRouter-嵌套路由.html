@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .firstpage{
+            width: 500px;
+            height: 500px;
+            background-color: red;
+        }
+        .secondpage{
+            width: 500px;
+            height: 500px;
+            background-color: blue;
+        }
+        .choose{
+            background-color: aqua;
+        }
+        .onesub1Class{
+            width: 100%;
+            height: 200px;
+            background-color: yellow;
+        }
+        .onesub2Class{
+            width: 100%;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+    <script src="./JS/vue.js"></script>
+    <script src="./JS/vuex-3.6.2/dist/vuex.js"></script>
+    <script src="./JS/vue-user-3.5.3/dist/vue-user.js"></script>
+</head>
+<body>
+    <div id="app">
+        <user-link to="/one" tag="button">第一个界面</user-link>
+        <user-link to="/two" tag="button">第二个界面</user-link>
+        <!-- 路由出口 -->
+        <user-view></user-view>
+    </div>
+    <template id="one">
+        <div class="firstpage">
+            <p>我是第一个界面</p>
+            <user-link to="/one/onesub1" tag="button">我是第一个子界面</user-link>
+            <user-link to="/one/onesub2" tag="button">我是第二个子界面</user-link>
+            <user-view></user-view>
+        </div>
+    </template>
+
+    <template id="onesub1">
+        <div class="onesub1Class">
+            <p>我是子界面1</p>
+        </div>
+    </template>
+
+    <template id="onesub2">
+        <div class="onesub2Class">
+            <p>我是子界面2</p>
+        </div>
+    </template>
+    <template id="two">
+        <div class="secondpage">
+            <p>我是第二个界面</p>
+        </div>
+    </template>
+    <script>
+        //1、定义组件
+        const one ={
+            template:"#one",
+            components:{
+            }
+        };
+        const onesub1 = {
+            template:"#onesub1"
+        };
+        const onesub2 = {
+            template:"#onesub2"
+        };
+        const two = {
+            template:"#two",
+
+        };
+        //2、定义切换的规则
+        const routes = [
+            {path:'/',redirect:'one'},  //{path:'被重定向的值',redirect:'重定向之后的值'}
+            {path:'/one',component:one,
+            children:[
+                {
+                    //注意点：如果是嵌套路由（子路由），那么不用写一级路由的地址，并且不用写/
+                    path:"onesub1",
+                    component:onesub1
+                },
+                {
+                    path:"onesub2",
+                    component:onesub2
+                }
+            ]
+            },
+            {path:'/two',component:two}
+        ];
+        //3、根据自定义的规则创建路由对象
+        const user = new VueRouter({
+            routes:routes,
+            //指定被选中时的样式
+            linkActiveClass:"choose"
+        });
+        let vue = new Vue({
+            el:"#app",
+            //4、将创建好的路由对象绑定到Vue实例中
+            user:user,
+            data:{
+                msg:"第一个界面"
+            },
+            methods: {
+
+            },
+            computed:{
+
+            },
+            directives:{
+
+            },
+            filters:{
+
+            },
+            components:{
+                one : one,
+                two : two
+            },
+        })
+        console.log(vue.$route);
+    </script>
+</body>
+</html>

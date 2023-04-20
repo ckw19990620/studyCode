@@ -1,0 +1,14 @@
+{
+  "name": "express_demo",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "01_hello_world.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AlexChen",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>闭包</title>
+</head>
+<body>
+<script>
+  // 闭包：fun这个函数访问到了fn函数作用域中的局部变量num，此时就产生了闭包
+  // fn外面的作用域也可以访问fn内部的局部变量num
+  // 闭包的主要作用：延伸了变量的作用范围。
+  function fn() {
+    let num = 10;
+    // function fun() {
+    //     console.log(num);
+    // }
+    return function () {
+      console.log(num);
+    };
+  }
+
+  let f = fn();
+  f();
+  // 类似于
+  // f = function fun() {
+  // console.log(num);
+  // }
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链</title>
+</head>
+<body>
+<script>
+    function Star (uname,age) {
+        this.name = uname;
+        this.age = age
+    }
+    Object.prototype.sing = function () {
+        console.log('我会唱歌');
+    }
+    var ldh = new Star('ldh', 33);
+    //  1、只要是原型对象就有__proto__原型，指向原型对象。
+    ldh.sing();
+    //  2、Star原型对象里面__proto__原型指向的是Object.prototype
+    console.log(Star.prototype.__proto__ === Object.prototype);
+    //  3、Object原型对象里面__proto__原型指向的是null  ，即已经到了最顶层
+    console.log(Object.prototype.__proto__);        //  输出为null
+
+    //  当实例对象中没有该方法时，则会去Star原型对象中找该方法，如果依旧没有找到则会去Object原型对象中去找。
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则总结</title>
+</head>
+<body>
+<script>
+    let reg = /^abc{3}$/      //此时只是让c重复三次，即 abccc返回true，其他返回false
+    console.log(reg.test('abc'));         // false
+    console.log(reg.test('abcabcabc'));   // false
+    console.log(reg.test('abccc'));       // true
+
+
+    // ()：小括号表示优先级
+    let reg1 = /^(abc){3}$/;
+    console.log(reg1.test('abc'));        // false
+    console.log(reg1.test('abcabcabc'));  // true
+    console.log(reg1.test('abcccc'));     // false
+    console.log(reg1.test('c'));          // false
+    console.log(reg1.test('a'));          // false
+    console.log(reg1.test('b'));          // false
+</script>
+</body>
+</html>

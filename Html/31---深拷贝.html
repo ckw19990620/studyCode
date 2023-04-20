@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>深拷贝</title>
+</head>
+<body>
+<script>
+  let obj = {
+    id: 1,
+    name: 'zs',
+    msg: {
+      age: 18
+    },
+    color: ['red', 'blue']
+  };
+  let o = {};
+
+  // 封装函数
+  // newobj[k]是key,item是value
+  function deepCopy(newobj, oldobj) {
+    for (let k in oldobj) {
+      // 判断属性值是哪种数据类型
+      // 1.获取属性值   oldobj[k]
+      let item = oldobj[k];
+      // 2.判断这个值是否是数组
+      if (item instanceof Array) {
+        newobj[k] = [];
+        // console.log(newobj[k],'newobj[k]');
+        // console.log(item,'item');
+        deepCopy(newobj[k], item)
+        // k 索引
+        // item obj.color
+      } else if (item instanceof Object) {
+        // 3.判断这个值是否是对象
+        newobj[k] = {};
+        deepCopy(newobj[k], item)
+      } else {
+        // 4.属于简单数据类型
+        newobj[k] = item;
+      }
+    }
+  }
+
+  deepCopy(o, obj);
+  console.log(o);
+</script>
+</body>
+</html>

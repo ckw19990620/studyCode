@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改变函数内this指向</title>
+</head>
+<body>
+<button>点击</button>
+<button>点击</button>
+<button>点击</button>
+<script>
+    'use strict'
+    // 1、call()方法
+    // let o = {
+    //     name: 'ckw'
+    // };
+    // function fn(a, b) {
+    //     console.log(this);
+    //     console.log(a+b)
+    // }
+    // fn.call(o,1,2);
+    //
+    // function Father(uname, age, sex){
+    //     this.uname = uname;
+    //     this.age = age;
+    //     this.sex = sex;
+    // }
+    // function Son(uname, age, sex){
+    //     Father.call(this,uname, age, sex);
+    // }
+    // let son = new Son('ckw',18,'男');
+    // console.log(son);
+
+    // 2、apply()方法
+    // let o = {
+    //     name: 'andy'
+    // };
+    // function fn(arr){
+    //     console.log(this);
+    //     console.log(arr);
+    // }
+    // fn.apply(o, ['pink','blue','aqua']);
+    // 1、apply()方法既可以调用函数，也可以修改函数内部的this指向
+    // 2、但是它的第二个参数必须是数组/伪数组
+    // 3、apply()的主要应用，比如说可以利用 apply 借助Math内置对象求最大值
+    // let arr = [1,0,3,8,9,77];
+    // let arr1 = ['red', 'aqua']
+    // let res = Math.max.apply(Math,arr);
+    // let res1 = Math.max.apply(Math,arr1);
+    // console.log(res);
+    // console.log(res1);
+
+    // bind()方法
+    let o = {
+        name:'andy'
+    }
+    function fn(a,b){
+        console.log(this);
+        console.log(a + b);
+    }
+    let f = fn.bind(o,1,2);
+    f();
+    // 1、不会调用原函数，可以改变原来的this指向
+    // 2、返回的是原函数改变this之后的原函数的拷贝
+    // 3、如果有些函数不需要立即调用，又想改变函数内部的this指向，此时用bind方法最合适
+
+    // let btn = document.querySelector('button');
+    // btn.onclick = function (){
+    //     this.disabled = true;       // 这个this指向button
+    //     // let that = this;
+    //     setTimeout(function (){         //定时器中的this指向window对象
+    //          this.disabled = false;     //这个this此时指向btn
+    //     }.bind(this),3000)       // 这个this指向的是btn
+    // }
+    let btns = document.querySelectorAll('button');
+    for (let i = 0; i < btns.length; i++){
+        btns[i].onclick = function () {
+            this.disabled = true;
+            setTimeout(function (){
+                this.disabled = false;
+            }.bind(this),2000)
+        }
+    }
+</script>
+</body>
+</html>

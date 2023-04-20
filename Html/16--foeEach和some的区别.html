@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>forEach和some的区别</title>
+</head>
+<body>
+<script>
+    let arr = [1,'pink','green',11];
+    // arr.some(function (value){
+    //     if (value === 'green'){
+    //         console.log('找到了该元素');
+    //         return true;     //some中return true会终止迭代,效率更高
+    //     }
+    //     console.log(value)
+    // });
+
+    // arr.forEach(function (value){
+    //     if (value === 'green'){
+    //         console.log('找到了该元素');
+    //         return true;        // forEach中return不会终止迭代
+    //     }
+    //     console.log(value);
+    // })
+
+    // arr.filter(function (value){
+    //     if (value === 'green'){
+    //         console.log('找到了该元素');
+    //     }
+    //     console.log(value)
+    // });
+</script>
+</body>
+</html>

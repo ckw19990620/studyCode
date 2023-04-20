@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>利用原型对象扩展内置对象方法</title>
+</head>
+<body>
+<script>
+    Array.prototype.sum = function () {
+        let sum = 0;
+        for (let i = 0; i < this.length; i++){
+            sum += this[i];
+        }
+        return sum
+    };
+
+    //  会报错,会把原先的方法覆盖掉
+    // Array.prototype= {
+    //     sum: function () {
+    //         let sum = 0;
+    //         for (let i = 0; i < this.length; i++){
+    //             sum += this[i];
+    //         }
+    //         return sum
+    //     }
+    // }
+    var array = [1,2,3]
+    console.log(array.sum());
+    console.log(Array.prototype);
+    let array1 = new Array(11,22,33)
+    console.log(array1.sum());
+</script>
+</body>
+</html>

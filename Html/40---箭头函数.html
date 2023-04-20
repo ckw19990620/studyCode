@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+<script>
+    let fn = () => console.log(1 + 1);
+    fn();
+    let fn1 = a => console.log(a);
+    fn1(100);
+
+    // this关键字
+    let obj = {name: 'za'}
+    let fc = function (){
+        console.log(this);
+        return () => {
+            console.log(this);
+        }
+    }
+    let qa = fc.call(obj);
+    qa();
+</script>
+</body>
+</html>

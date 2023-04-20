@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function fun(n, o) {
+    console.log(o);
+    return {
+      fun: function (m) {
+        console.log(m,'m');
+        return fun(m, n)
+      }
+    }
+  }
+  var a = fun(0);  // o: undefined
+  // {
+  //   fun: function (m) {
+  //     return fun(m,n)
+  //   }
+  // }
+  a.fun(1);  // o:undefined
+  // a.fun(2);  // o:undefined
+  // a.fun(3);  // o:undefined
+</script>
+</body>
+</html>

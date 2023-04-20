@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>边界符</title>
+</head>
+<body>
+<script>
+    let rg = /abc/; //正则表达式里面不需要加引号，无论数字型或字符串型
+    // /abc/ 只要包含有abc这个字符串返回的都是true
+    console.log(rg.test('abcc'));   // true
+    console.log('---------');
+    let reg = /^abc/;
+    // /^abc/ 表示以必须以abc开头
+    console.log(reg.test('abcd'));  // true
+    console.log(reg.test('aabcd')); //false
+    console.log('---------');
+    let reg1 = /^abc$/;
+    // /^abc$/ 表示精确匹配，要求必须是abc字符串才符合规范
+    console.log(reg1.test('abc'));  // true
+    console.log(reg1.test('abcd'));  // false
+    console.log(reg1.test('aabcd')); // false
+    console.log(reg1.test('abcabc')); // false
+</script>
+</body>
+</html>

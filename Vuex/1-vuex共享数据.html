@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./JS/vue.js"></script>
+    <script src="./JS/vuex-3.6.2/dist/vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        <grdfather></grdfather>
+    </div>
+    <template id="grdfather">
+        <div>
+            <!-- 在使用Vuex中保存的共享数据时，必须通过如下的格式来使用 -->
+            <p>{{this.$store.state.msg}}</p>
+            <father></father>
+        </div>
+    </template>
+
+    <template id="father">
+        <div>
+            <p>{{this.$store.state.msg}}</p>
+            <son></son>
+        </div>
+    </template>
+
+    <template id="son">
+        <div>
+            <p>{{this.$store.state.msg}}</p>
+            <p></p>
+        </div>
+    </template>
+    <script>
+        // 创建Vuex对象
+        const store = new Vuex.Store({
+            //这里的state相当于组件中的data，专门用于保存共享数据
+            state:{
+                msg:"ckw"
+            }
+        })
+        Vue.component("grdfather",{
+            template:"#grdfather",
+            //在祖先组件中添加store的key保存Vuex对象
+            //只要祖先组件中保存了Vuex对象，那么祖先组件和所有子组件都可以使用Vuex保存的共享数据
+            store:store,
+            components:{
+                "father":{
+                    template:"#father",
+                    components:{
+                        "son":{
+                            template:"#son"
+                        }
+                    }
+                }
+            }
+        })
+        let vue = new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods: {
+                
+            },
+            computed:{
+
+            },
+            directives:{
+
+            },
+            filters:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

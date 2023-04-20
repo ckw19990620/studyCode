@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>量词重复某个模式的次数</title>
+</head>
+<body>
+<div>
+    <input type="text">
+    <button>提交</button>
+    <div id="warn"></div>
+</div>
+<script>
+    let inputVal = document.getElementsByTagName("input");
+    let btn = document.getElementsByTagName("button");
+    let warn = document.getElementById('warn');
+    console.log(inputVal);
+    inputVal[0].onblur = function () {
+        // console.log(reg.test(this.value));
+        warn.innerHTML = '';
+        if (reg.test(this.value)) {
+            inputVal[0].style.borderColor = 'aquamarine';
+        } else {
+            warn.innerHTML = '请输入正确的用户名';
+        }
+    }
+    let reg = /^[a-zA-z0-9-_]{6,16}$/;
+    console.log(reg.test('chenkangwei1-_'));
+</script>
+</body>
+</html>

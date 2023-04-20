@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="GET">GET</button>
+<button id="POST">POST</button>
+<script>
+    let get = document.getElementById('GET')
+    get.addEventListener('click', function () {
+      let xhr = new XMLHttpRequest()
+      xhr.open('GET', 'http://localhost:3000/user/list')
+      xhr.send('name=ckw&age=19')
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            console.log(JSON.parse(xhr.response));
+          }
+        }
+      }
+    })
+    let post = document.getElementById('POST')
+    post.addEventListener('click', function () {
+      let xhr = new XMLHttpRequest()
+      xhr.open('POST', 'http://localhost:3000/user/list')
+      xhr.send(JSON.stringify({name: 'ckw', age: 18}))
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            console.log(JSON.parse(xhr.response));
+          }
+        }
+      }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<p>resolve(123)</p>
+<script>
+  // resolve
+  // let p1 = Promise.resolve(521);
+  // console.log(p1);
+  // let p2 = Promise.resolve(new Promise((resolve, reject) => {
+  //   resolve(123)
+  // }))
+  // console.log(p2);
+
+  // reject
+  // let p1 = Promise.reject(123)
+  // let p2 = Promise.reject('loveYourSelf')
+  // let p3 = Promise.reject(new Promise((resolve, reject) => {
+  //   resolve(123)
+  // }))
+  // console.log(p1);
+  // console.log(p2);
+  // console.log(p3);
+
+
+  // all
+  let p1 = new Promise((resolve, reject) => {
+    resolve(123)
+  })
+  let p2 = Promise.reject('p2');
+  let p3 = Promise.reject('error');
+  let res = Promise.all([p1, p2, p3]);
+  console.log(res);
+  res.catch(reason => {
+    console.log(reason);
+  })
+</script>
+</body>
+</html>

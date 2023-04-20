@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script src="./JS/vue.js"></script>
+    <script src="./JS/vue-user-3.5.3/dist/vue-user.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .firstpage{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        .secondpage{
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 生命周期方法分类 -->
+        <!-- 1、创建期间的生命周期方法 -->
+        <!--
+            beforeCreata
+            created
+            beforeMount
+            mounted
+         -->
+        <!-- 2、运行期间的生命周期方法 -->
+        <!--
+            beforeUpdate
+            updated
+         -->
+        <!-- 3、销毁期间的生命周期方法 -->
+        <!--
+            beforeDestroy
+            destroyed
+        -->
+        <p>{{msg}}</p>
+    </div>
+    <script>
+        let vue = new Vue({
+            beforeCreata:function(){
+                /*
+                    在调用beforeCreate的时候，仅仅表示Vue实例刚被创建出来
+                    此时还没有初始化Vue实例中的数据和方法，所以此时还不能访问Vue实例中的数据和方法
+                */
+                // console.log(this.msg);
+                // console.log(this.tan);
+            },
+            created:function(){
+                /*
+                    在调用created的时候，是最早能访问vue实例中的数据和方法的时候
+                */
+                // console.log(this.msg);
+                // console.log(this.tan);
+            },
+            beforeMount:function(){
+                //在调用beforeMount的时候，Vue编译好了最终模板，放在内存中，但是还没有挂载到页面上
+                // console.log(document.querySelector("p").innerHTML);
+                // console.log(document.querySelector("p").innerText);
+            },
+            mounted:function(){
+                //在调用mounted的时候，表示Vue已经完成了模板的渲染，可以拿到界面上渲染之后的最终数据
+                console.log(document.querySelector("p").innerHTML);
+                console.log(document.querySelector("p").innerText);
+            },
+            el:"#app",
+            //4、将创建好的路由对象绑定到Vue实例中
+            watch:{
+            },
+            data:{
+                msg:"ckw"
+            },
+            methods: {
+                tan(){
+                    console.log("ckw");
+                }
+            },
+            computed:{
+
+            },
+            directives:{
+
+            },
+            filters:{
+
+            },
+            components:{
+
+            },
+        })
+    </script>
+</body>
+</html>

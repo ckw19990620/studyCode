@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>利用递归求阶乘</title>
+</head>
+<body>
+<script>
+    function fn(n){
+        if (n === 1){
+            return 1;
+        }
+        return n * fn(n - 1);
+    }
+
+    console.log(fn(3));
+    console.log(fn(4));
+
+    // 详细思路
+    // 第一次执行，return 3*fn(2)
+    // 第二次执行，return 3*（ 2 * fn(2 - 1) ）
+    // 第三次执行，return 3*（ 2 * 1 ）,最后输出结果为6
+</script>
+</body>
+</html>

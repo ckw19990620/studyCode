@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // startsWith()可以判断参数字符串是否位于原字符串的头部，返回值true / false
+    // endsWith()可以判断参数字符串是否位于原字符串的尾部，返回值true / false
+    let arr = 'Hello World!';
+    console.log(arr.startsWith('He'));  // true
+    console.log(arr.endsWith('!'));     // true
+
+
+    let arr1 = [1,1,2,3,4,4,5,6,7,7,7,8,9,0,0,];
+    let res = new Set([...arr1]);
+    console.log(res);
+</script>
+</body>
+</html>

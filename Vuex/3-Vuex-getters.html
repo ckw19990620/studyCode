@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./JS/vue.js"></script>
+    <script src="./JS/vuex-3.6.2/dist/vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+    <!--
+        1.什么是Vuex的getters?
+        Vuex的getters属性就和组件的计算属性一样, 会将数据缓存起来, 只有数据发生变化才会重新计算
+    -->
+        <father></father>
+    </div>
+    <template id="father">
+        <div>
+            <p>{{this.$store.getters.format}}</p>
+            <p>{{this.$store.getters.format}}</p>
+            <p>{{this.$store.getters.format}}</p>
+        </div>
+    </template>
+    <template id="son">
+        <div>
+            
+        </div>
+    </template>
+    <script>
+        const store = new Vuex.Store({
+            //  这里的state相当于组件中的data，专门用于保存共享数据
+            state:{
+                msg:"陈康伟"
+            },
+            //  用于保存修改共享数据的方法
+            mutations:{
+
+            },
+            getters:{
+                format(state){
+                    console.log("getters被执行了");
+                    return state.msg + "ckw"                   
+                }
+            }
+        });
+        Vue.component("father",{
+            template:"#father",
+            store:store,
+            components:{
+                "son":{
+                    template:"#son"
+                }
+            }
+        });
+        let vue = new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods: {
+                
+            },
+            computed:{
+
+            },
+            directives:{
+
+            },
+            filters:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

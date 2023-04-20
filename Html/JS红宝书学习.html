@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = [{
+            id: "2023010600157"
+        },{
+            id: "2023010600158"
+        },{
+            id: "2023010600157"
+        },{
+            id: "2023010600158"
+        }
+    ]
+    let res = arr.reduce((prev, curr, index) => {
+        console.warn(`loop No ${index + 1}`)
+        console.log(prev);
+        console.log(curr, 'curr');
+        if (curr.id !== prev.id) {
+            prev.push(curr)
+        }
+        console.log(prev, 'prev');
+        return prev
+    },[])
+    console.log(res);
+</script>
+</body>
+</html>

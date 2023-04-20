@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>手撕Promise</title>
+  <script src="Promise封装--手撕Promise%20.js"></script>
+</head>
+<body>
+<script>
+  let p = new Promise((resolve, reject) => {
+    // resolve('ok')
+    throw 'Error'
+  })
+  p.then(value => {
+    console.log(value);
+  },reason => {
+    console.warn(reason)
+  })
+  // console.log(p);
+</script>
+</body>
+</html>

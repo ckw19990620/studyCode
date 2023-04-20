@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <style>
+        .box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+            justify-content: space-around;
+        }
+        .box label{
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<h1>注册页</h1>
+<hr>
+<div>
+    <form action="/signup" method="post">
+        <div class="box">
+            <label for="userName">
+                用户名：<input id="userName" name="userName" type="text">
+            </label>
+            <label for="passWord">
+                密码：<input id="passWord" name="passWord" type="password">
+            </label>
+            <label>
+                确认密码：<input id="repeatPassWord" name="repeatPassWord" type="password">
+            </label>
+            <label for="nickName">
+                昵称：<input id="nickName" name="nickName" type="text">
+            </label>
+            <input type="submit" value="注册">
+        </div>
+        <div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

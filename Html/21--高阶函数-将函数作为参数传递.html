@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回调函数</title>
+</head>
+<body>
+<script>
+    function fn(a, b, callback) {
+        console.log(a + b);
+        callback && callback();
+    }
+
+    function fn1() {
+        return function (){};
+    }
+    fn1();
+    fn(1,2,function (){alert('我是最后调用的')});
+</script>
+</body>
+</html>

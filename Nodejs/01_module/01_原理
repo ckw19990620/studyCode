@@ -1,0 +1,6 @@
+
+exports = {
+    a: "111",
+    b: {}
+}
+console.log(arguments);

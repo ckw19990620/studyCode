@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./JS/vue.js"></script>
+</head>
+<body>
+    <!--
+        1.Vue渲染组件的两种方式
+        1.1先定义注册组件, 然后在Vue实例中当做标签来使用
+        1.2先定义注册组件, 然后通过Vue实例的render方法来渲染
+
+        2.两种渲染方法的区别
+        1.1当做标签来渲染, 不会覆盖Vue实例控制区域
+        1.2通过render方法来渲染, 会覆盖Vue实例控制区域
+    -->
+    <div id="app">
+        <!-- <one></one> -->
+    </div>
+    <template id="one">
+        <div>
+            <p>我是组件</p>
+        </div>
+    </template>
+    <script>
+        Vue.component("one",{
+            template:"#one",
+            data:function(){
+                return {
+                    msg:"ckw"
+                }
+            },
+            methods:{
+                func2(){
+                    console.log("ckw");
+                }
+            }
+        });
+        let vue = new Vue({
+            el:"#app",
+            render:function(createElement){
+                return createElement("one");
+            },
+            data:{
+
+            },
+            methods: {
+
+            },
+            computed:{
+
+            },
+            directives:{
+
+            },
+            filters:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>some()方法</title>
+</head>
+<body>
+<script>
+    let arr = [11,22,33,4];
+    let flag = arr.some(function (value, index){
+        return value < 3;
+    })
+    console.log(flag);
+    let arr1 = ['red', 'pink', 'yellow']
+    let flag1 = arr1.some(function (value){
+        return value === 'red';
+    })
+    console.log(flag1);
+
+    // filter也是查找满足条件的元素，但返回值是一个数组，而且会返回所有符合条件的元素
+    // some的返回值是true/false，如果查找到第一个满足条件的元素，就会终止循环
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter方法</title>
+</head>
+<body>
+<script>
+    // filter筛选方法
+    let arr = [11,22,33,44,20];
+    let newArr = arr.filter(function (value, index){
+        // return value >= 20;
+        return value %2 === 0;
+    })
+    console.log(newArr);
+</script>
+</body>
+</html>

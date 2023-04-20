@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./JS/vue.js"></script>
+  <script src="./JS/vue-user-3.5.3/dist/vue-user.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .firstpage {
+      width: 500px;
+      height: 500px;
+      background-color: red;
+    }
+
+    .secondpage {
+      width: 500px;
+      height: 500px;
+      background-color: blue;
+    }
+
+    .choose {
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!-- 如果是通过router-link来设置URL的hash值，那么不需要写#，而是通过to属性来设置hash值 -->
+  <!-- 注意点：默认情况下，Vue在渲染router-link的时候是通过a标签来渲染的
+              如果不想用a标签来渲染，可以用tag属性来指定要由什么标签渲染
+   -->
+  <!--
+      第一种传递参数的方式，通过URL传递
+      在指定HASH的时候，通过？key=value&key=value的方式传递
+      在传递的组件的生命周期方法中用this.$route.query的方法获取
+  -->
+  <user-link to="/one?name=ckw&age=23" tag="button">第一个界面</user-link>
+
+  <!--
+      第二种传递参数的方式：通过路由规则中的占位符传递
+      在指定路由规则的时候通过:/key:/key的方式指定占位符
+      在指定HASH的时候通过/value/value的方式来传递值
+      在传递的组件的生命周期方法中用this.$route.params的方法获取
+   -->
+  <user-link to="/two/ckw/23" tag="button">第二个界面</user-link>
+  <!-- 路由出口 -->
+  <user-view></user-view>
+</div>
+<template id="one">
+  <div class="firstpage">
+    <p>我是第一个界面</p>
+  </div>
+</template>
+<template id="two">
+  <div class="secondpage">
+    <p>我是第二个界面</p>
+  </div>
+</template>
+<script>
+  //1、定义组件
+  const one = {
+    template: "#one",
+    created() {
+      console.log(this.$route);
+      console.log(this.$route.query.name);
+      console.log(this.$route.query.age);
+    },
+  };
+  const two = {
+    template: "#two",
+    created() {
+      console.log(this.$route);
+      console.log(this.$route.params.name);
+      console.log(this.$route.params.age);
+    },
+  };
+  //2、定义切换的规则
+  const routes = [
+    {path: '/', redirect: 'one'},  //{path:'被重定向的值',redirect:'重定向之后的值'}
+    {path: '/one', component: one},
+    {path: '/two/:name/:age', component: two}
+  ];
+  //3、根据自定义的规则创建路由对象
+  const user = new VueRouter({
+    routes: routes,
+    //指定被选中时的样式
+    linkActiveClass: "choose"
+  })
+  let vue = new Vue({
+    el: "#app",
+    //4、将创建好的路由对象绑定到Vue实例中
+    user: user,
+    data: {},
+    methods: {},
+    computed: {},
+    directives: {},
+    filters: {},
+    components: {
+      one: one,
+      two: two
+    },
+  })
+  console.log(vue.$route);
+</script>
+</body>
+</html>

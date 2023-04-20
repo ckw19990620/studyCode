@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./JS/vue.js"></script>
+</head>
+<body>
+    <!--
+        1.Vue特殊特性
+        Vue特点: 数据驱动界面更新, 无需操作DOM来更新界面
+        也就是说Vue不推荐我们直接操作DOM, 但是在企业开发中有时候我们确实需要拿到DOM操作DOM
+        那么如果不推荐使用原生的语法获取DOM, 我们应该如何获取DOM?
+        在Vue中如果想要拿到DOM元素我们可以通过ref来获取
+
+        2.ref使用
+        2.1在需要获取的元素上添加ref属性. 例如: <p ref="mypp">我是段落</>
+        2.2在使用的地方通过 this.$refs.xxx获取, 例如 this.$ref.myppp
+
+        3.ref特点
+        ref添加到元素DOM上, 拿到的就是元素DOM
+        ref添加到组件上, 拿到的就是组件
+    -->
+    <div id="app">
+        <button @click="func1">按钮</button>
+        <p ref="yuans">原生DOM</p>
+        <father id="myOne" ref="myOne"></father>
+    </div>
+    <template id="father">
+        <div>
+            <p>我是组件</p>
+        </div>
+    </template>
+    <script>
+        Vue.component("father",{
+            template:"#father",
+            data:function(){
+                return {
+                    msg:"ckw"
+                }
+            },
+            methods:{
+                func2(){
+                    console.log("ckw");
+                }
+            }
+        });
+        let vue = new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods: {
+                func1(){
+                    //注意点：如果是通过原生语法获取元素，无论是原生元素或者自定义组件，拿到的都是原生元素
+                    //       并且Vue官方并不推荐这样获取
+                    // console.log(document.querySelector("p"));
+                    // console.log(document.querySelector("#myOne"));
+
+                    // 在Vue中如果想获取原生的元素或者获取自定义的组件, 可以通过ref来获取
+                    // 注意点:ref如果是添加给元素的元素, 那么拿到的就是元素的元素
+                    //       :ref如果是添加给自定义的组件, 那么拿到的就是自定义的组件
+                    console.log(this.$refs);
+                    console.log(this.$refs.yuans);
+                    console.log(this.$refs.myOne);
+                    console.log(this.$refs.myOne.msg);
+                    console.log(this.$refs.myOne.func2);
+                }
+            },
+            computed:{
+
+            },
+            directives:{
+
+            },
+            filters:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

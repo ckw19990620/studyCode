@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function Person(name, age, gender) {
+    this.name = name || '';
+    this.age = age || '';
+    this.gender = gender || ''
+  }
+  Person.prototype.sayHi = function () {
+    console.log('I am' + this.name)
+  }
+  function Student(name, age, gender, score){
+    // 继承属性
+    Person.call(this,name,age,gender);
+  }
+
+  // 原型继承，继承方法
+  Student.prototype = new Person()
+
+  // 构造函数重新指向
+  Student.prototype.constructor = Student
+
+  //给原型动态添加方法
+  Student.prototype.printScore = function () {
+    console.log('my score is' + this.score)
+  }
+  let s1 = new Student('zs', 20, '男', 90)
+  s1.sayHi();
+  s1.printScore();
+  console.log(s1);
+</script>
+</body>
+</html>

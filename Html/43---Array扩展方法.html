@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array扩展方法</title>
+</head>
+<body>
+<script>
+    // 构造函数方法 Array.from
+    // 将伪数组或可遍历对象转换成真正的数组
+    let arr = {
+        '0': '1',
+        '1': '2',
+        '2': '3',
+        length: 3
+    }
+    let newarr = Array.from(arr, item => item *2);
+    let o = []
+    console.log(newarr);
+    newarr.forEach((item,index) => {
+        if (item > 2 && (index + 2) <= newarr.length){
+            o.push(item);
+        }
+    });
+    console.log(o);
+</script>
+</body>
+</html>

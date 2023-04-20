@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // let car = (function () {
+  //   let start = 13;
+  //   let total = 0;
+  //   return {
+  //     price: function (n) {
+  //       n <= 3 ? total = start : total = start + (n - 3) * 5
+  //       return total;
+  //     },
+  //     crowded: function (flag) {
+  //       return flag ? total + 10 : total;
+  //     }
+  //   }
+  // })();
+  // console.log(car.price(5));   //23
+  // console.log(car.crowded(true));  //33
+  // console.log(car.price(1));   //13
+  // console.log(car.crowded(false)); //13
+
+
+  let price = function (begin, crowded, mile, startMile) {
+    if (mile <= startMile) {
+      return crowded ? begin : begin + 10
+    } else {
+      return  crowded ? begin + (mile - startMile) * 2.5 + 10 : begin + mile * 2.5
+    }
+  }
+  console.log(price(15, true, 5, 5));
+</script>
+</body>
+</html>

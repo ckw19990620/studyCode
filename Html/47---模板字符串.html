@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板字符串</title>
+</head>
+<body>
+<script>
+    let str1 = `这是一个模板字符串`;
+    console.log(str1);
+    // 模板字符串中可以解析变量
+    let name = 'ow';
+    let sy = `我的名字是${name}`;
+    console.log(sy);
+    let o = {
+        name: '张三',
+        age: 18,
+        gender: '男'
+    }
+    let s = `<span>${o.name}</span>
+    <span>${o.age}</span>
+    <span>${o.gender}</span>`
+    document.write(s);
+
+    function fn() {
+        return '我是fn函数'
+    }
+    let f = `模板字符串 ${fn()}`;
+    console.log(f);
+</script>
+</body>
+</html>
