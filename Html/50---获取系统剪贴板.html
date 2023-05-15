@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label>
+    <input type="text">
+</label>
+</body>
+<script>
+  // 1. 监听paste事件，在进行粘贴的时候会触发
+  window.addEventListener('paste', function (event) {
+    // 输出事件对象的clipboardData属性，如下图，数据存储在对象中，但是直接打开是看不到的，只有输出event.clipboardData对象的某个属性或方法才可以看到
+    console.log(event.clipboardData, 16);
+    // 获取文本值
+    let text = event.clipboardData.getData('text');
+    console.log(text);
+  })
+</script>
+</html>
