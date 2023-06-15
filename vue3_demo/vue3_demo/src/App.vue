@@ -10,6 +10,7 @@
       <router-link to="/about">to About</router-link>
     </p>
     <router-view></router-view>
+    <router-view name="About"></router-view>
   </div>
 </template>
 
